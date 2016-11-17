@@ -33,7 +33,10 @@ const config = validate(merge(baseConfig, {
           'css-loader'
         )
       },
-
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('css!sass')
+      },
       // Pipe other styles through css modules and apend to style.css
       {
         test: /^((?!\.global).)*\.css$/,
@@ -50,7 +53,6 @@ const config = validate(merge(baseConfig, {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
     ]
   },
-
   plugins: [
     // https://webpack.github.io/docs/list-of-plugins.html#occurrenceorderplugin
     // https://github.com/webpack/webpack/issues/864

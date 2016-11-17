@@ -1,16 +1,14 @@
-// @flow
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
-export default class App extends Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired
-  };
+import Navbar from '../components/Navbar';
 
-  render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+export const AppContainer = ({ children }) => (<div>
+  <Navbar />
+  {children}
+</div>);
+
+AppContainer.propTypes = {
+  children: PropTypes.element.isRequired
+};
+
+export default AppContainer;

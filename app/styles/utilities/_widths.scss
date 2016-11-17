@@ -1,0 +1,36 @@
+.container {
+    margin: 0 auto;
+    max-width: 1140px;
+}
+
+[class*="u-width"] {
+    display: inline-block;
+    vertical-align: top;
+}
+
+@mixin widths($widths-columns, $widths-breakpoint: null) {
+  @each $widths-denominator in $widths-columns {
+    @for $widths-numerator from 1 through $widths-denominator {
+      .u-width-#{$widths-numerator}\/#{$widths-denominator}#{$widths-breakpoint} {
+        width: ($widths-numerator / $widths-denominator) * 100% !important;
+      }
+      .u-push-#{$widths-numerator}\/#{$widths-denominator}#{$widths-breakpoint} {
+        position: relative;
+        right: auto;
+        left: ($widths-numerator / $widths-denominator) * 100% !important;
+      }
+      .u-pull-#{$widths-numerator}\/#{$widths-denominator}#{$widths-breakpoint} {
+        position: relative;
+        right: ($widths-numerator / $widths-denominator) * 100% !important;
+        left: auto;
+      }
+    }
+  }
+}
+@include widths(1 2 3 4 5);
+
+@each $alias, $bp in $mq-breakpoints {
+  @include mq($from: $bp) {
+    @include widths(1 2 3 4 5, \@#{$alias});
+  }
+}

@@ -1,0 +1,23 @@
+.dc-navbar {
+    $color: slateblue;
+    background: darken($color, 10%);
+    float: left;
+    height: 100vh;
+    width: auto;
+    li {
+        text-align: center;
+        a {
+            color: $color;
+            display: block;
+            line-height: 30px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            i {
+                display: block;
+            }
+            &:hover {
+                background: lighten($color, 10%);
+            }
+        }
+    }
+}
